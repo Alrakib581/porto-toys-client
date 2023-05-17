@@ -25,7 +25,7 @@ const NavigationBar = () => {
                     <button className='btn btn-outline-dark'>Login</button>
                 </div>
             </div>
-            <Navbar className='nav-bg-color py-3' expand="lg">
+            <Navbar  className='nav-bg-color py-3' expand="lg">
                 <Container>
                     {/* <Navbar.Brand className='text-white' href="#home">React-Bootstrap</Navbar.Brand> */}
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
