@@ -1,29 +1,44 @@
-import React from 'react';
-import { Container, Nav, NavDropdown, Navbar } from 'react-bootstrap';
+import React, { useContext } from 'react';
+import { Container, Nav, NavDropdown, Navbar, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import './NavigationBar.css';
 import { Link } from 'react-router-dom';
 import logo from '../../../public/porto-toys.png'
 import ActiveLink from '../../components/ActiveLink/ActiveLink';
+import { AuthContext } from '../../provider/AuthProvider';
 
 const NavigationBar = () => {
+    const { user, logout } = useContext(AuthContext)
+    // console.log(userLogout)
+    const userLogout =()=>{
+            logout()
+            console.log('cliked')
+    }
     return (
         <div className=''>
-            <div  className='container bg-white d-flex justify-content-between align-items-center py-3'>
+            <div className='container bg-white d-flex justify-content-between align-items-center py-3'>
                 <div className='d-flex align-items-center'>
                     <img className='logo' src={logo} alt="logo" />
                     <h5 className='ms-3'><Link className='fw-bold company-name text-decoration-none'>Porto Toys</Link></h5>
                 </div>
-                <div  className='d-flex align-items-center'>
-                    <NavDropdown  className='fw-semibold' title="Menu" id="basic-nav-dropdown">
-                        <NavDropdown.Item href="#action/3.1">
-                            <Link>My Toys</Link>
-                        </NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.2"> <Link>Add A Toy</Link> </NavDropdown.Item>
-                        <NavDropdown.Divider />
-                        <NavDropdown.Item href=""> <button className='btn fw-semibold'>Logout</button> </NavDropdown.Item>
-                    </NavDropdown>
-                    <img className='logo ms-4' src="" alt="logo" />
-                    <Link className='btn btn-outline-dark' to='/login'>Login</Link>
+                <div className='d-flex align-items-center'>
+                    {
+                        user ? <>
+                            <NavDropdown className='fw-semibold' title="Menu" id="basic-nav-dropdown">
+                                <NavDropdown.Item href="#action/3.1">
+                                    <Link>My Toys</Link>
+                                </NavDropdown.Item>
+                                <NavDropdown.Item> <Link>Add A Toy</Link> </NavDropdown.Item>
+                                <NavDropdown.Divider />
+                                <NavDropdown.Item>
+                                     <button className='btn fw-bold w-100' onClick={userLogout}>Logout</button>
+                                </NavDropdown.Item>
+                            </NavDropdown>
+                              <img  title={user?.displayName}  className='logo rounded-circle ms-4' src={user?.photoURL} alt="Avater" />   
+                        </>
+
+                            : <Link className='btn btn-outline-dark' to='/login'>Login</Link> 
+                     }
+
                 </div>
             </div>
             <Navbar className='nav-bg-color py-3' expand="lg">
