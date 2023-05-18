@@ -1,8 +1,10 @@
 import React from 'react';
 import { FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import useDynamicTitle from '../../hooks/useDynamicTitle';
 
 const Register = () => {
+    useDynamicTitle('Register')
     return (
         <div  className='container my-4'>
             <div className=' d-flex justify-content-center align-items-center'>
