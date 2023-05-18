@@ -2,7 +2,7 @@ import React from 'react';
 
 const Gallery = () => {
     return (
-        <div className='container'>
+        <div className='container my-5'>
             <h4 className='text-center company-name'>Toy Gallery</h4>
             <div className="row  my-5">
                 <div className="col-md-3">

@@ -10,7 +10,7 @@ const NavigationBar = () => {
             <div className='container d-flex justify-content-between align-items-center py-3'>
                 <div className='d-flex align-items-center'>
                     <img className='logo' src={logo} alt="logo" />
-                    <h5 className='fw-bold ms-3 company-name'>Porto Toys</h5>
+                    <h5 className='ms-3'><Link className='fw-bold company-name text-decoration-none'>Porto Toys</Link></h5>
                 </div>
                 <div className='d-flex align-items-center'>
                     <NavDropdown className='fw-semibold' title="Menu" id="basic-nav-dropdown">
@@ -22,7 +22,7 @@ const NavigationBar = () => {
                         <NavDropdown.Item href=""> <button className='btn fw-semibold'>Logout</button> </NavDropdown.Item>
                     </NavDropdown>
                     <img className='logo ms-4' src="" alt="logo" />
-                    <button className='btn btn-outline-dark'>Login</button>
+                    <Link className='btn btn-outline-dark' to='/login'>Login</Link>
                 </div>
             </div>
             <Navbar  className='nav-bg-color py-3' expand="lg">
