@@ -7,7 +7,7 @@ import useDynamicTitle from '../../hooks/useDynamicTitle';
 const Login = () => {
     useDynamicTitle('Login')
     return (
-        <div className='container my-5'>
+        <div className='container my-4'>
             <div className=' d-flex justify-content-center align-items-center'>
                 <div className='bg-light p-5 my-5 rounded'>
                     <h4>Login to <span className='company-name fw-bold'>Porto Toys</span></h4>
