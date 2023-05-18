@@ -3,6 +3,7 @@ import { Container, Nav, NavDropdown, Navbar } from 'react-bootstrap';
 import './NavigationBar.css';
 import { Link } from 'react-router-dom';
 import logo from '../../../public/porto-toys.png'
+import ActiveLink from '../../components/ActiveLink/ActiveLink';
 
 const NavigationBar = () => {
     return (
@@ -30,10 +31,10 @@ const NavigationBar = () => {
                     {/* <Navbar.Brand className='text-white' href="#home">React-Bootstrap</Navbar.Brand> */}
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="mx-auto">
-                            <Nav.Link className='text-white fw-semibold' href="#home">Home</Nav.Link>
-                            <Nav.Link className='text-white fw-semibold' href="#link">All Toys</Nav.Link>
-                            <Nav.Link className='text-white fw-semibold' href="#link">Blog</Nav.Link>
+                        <Nav className="mx-auto d-md-flex align-items-center gap-3">
+                            <ActiveLink to='/'>Home</ActiveLink>
+                            <ActiveLink to='/alltoys'>All Toys</ActiveLink>
+                            <ActiveLink to='/blog'>Blog</ActiveLink>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
