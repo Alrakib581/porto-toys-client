@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Container, Nav, NavDropdown, Navbar, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Container, Nav, NavDropdown, Navbar } from 'react-bootstrap';
 import './NavigationBar.css';
 import { Link } from 'react-router-dom';
 import logo from '../../../public/porto-toys.png'
