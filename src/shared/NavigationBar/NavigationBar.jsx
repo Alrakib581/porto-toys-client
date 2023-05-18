@@ -6,14 +6,14 @@ import logo from '../../../public/porto-toys.png'
 
 const NavigationBar = () => {
     return (
-        <div>
-            <div className='container d-flex justify-content-between align-items-center py-3'>
+        <div className=''>
+            <div  className='container bg-white d-flex justify-content-between align-items-center py-3'>
                 <div className='d-flex align-items-center'>
                     <img className='logo' src={logo} alt="logo" />
                     <h5 className='ms-3'><Link className='fw-bold company-name text-decoration-none'>Porto Toys</Link></h5>
                 </div>
-                <div className='d-flex align-items-center'>
-                    <NavDropdown className='fw-semibold' title="Menu" id="basic-nav-dropdown">
+                <div  className='d-flex align-items-center'>
+                    <NavDropdown  className='fw-semibold' title="Menu" id="basic-nav-dropdown">
                         <NavDropdown.Item href="#action/3.1">
                             <Link>My Toys</Link>
                         </NavDropdown.Item>
@@ -25,7 +25,7 @@ const NavigationBar = () => {
                     <Link className='btn btn-outline-dark' to='/login'>Login</Link>
                 </div>
             </div>
-            <Navbar  className='nav-bg-color py-3' expand="lg">
+            <Navbar className='nav-bg-color py-3' expand="lg">
                 <Container>
                     {/* <Navbar.Brand className='text-white' href="#home">React-Bootstrap</Navbar.Brand> */}
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
