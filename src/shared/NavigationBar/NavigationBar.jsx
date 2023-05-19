@@ -23,7 +23,7 @@ const NavigationBar = () => {
                 <div className='d-flex align-items-center'>
                     {
                         user ? <>
-                            <NavDropdown className='fw-semibold' title="Menu" id="basic-nav-dropdown">
+                            <NavDropdown  className='fw-semibold' title="Menu" id="basic-nav-dropdown">
                                 <NavDropdown.Item>
                                     <Link className='nav-link fw-semibold' to='/mytoys'>My Toys</Link>
                                 </NavDropdown.Item>
@@ -32,7 +32,7 @@ const NavigationBar = () => {
                                  </NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item>
-                                     <button className='btn fw-bold w-100' onClick={userLogout}>Logout</button>
+                                     <button className='btn fw-bold' onClick={userLogout}>Logout</button>
                                 </NavDropdown.Item>
                             </NavDropdown>
                               <img  title={user?.displayName}  className='logo rounded-circle ms-4' src={user?.photoURL} alt="Avater" />   

@@ -1,13 +1,15 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Login.css';
 import { FaGoogle } from 'react-icons/fa';
 import useDynamicTitle from '../../hooks/useDynamicTitle';
 import { GoogleAuthProvider, getAuth } from 'firebase/auth';
 import { AuthContext } from '../../provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Login = () => {
     useDynamicTitle('Login')
+    const navigate = useNavigate()
     const{loginUserWithGoogle, signInUser}= useContext(AuthContext)
     const [error, setError] = useState('')
     // email password login field code
@@ -21,6 +23,14 @@ const Login = () => {
             const user = result.user;
             setError('')
             event.target.reset();
+            Swal.fire({
+                position: 'top-center',
+                icon: 'success',
+                title: 'User Login Successfull.',
+                showConfirmButton: false,
+                timer: 2000
+              })
+            navigate('/')
         })
         .catch(error =>{
             if(error.message === 'Firebase: Error (auth/wrong-password).'){
@@ -41,6 +51,7 @@ const Login = () => {
            .then(result =>{
              const newUser = result.user
             //  console.log(newUser)
+            navigate('/')
            })
            .catch(error => {
              console.log(error)

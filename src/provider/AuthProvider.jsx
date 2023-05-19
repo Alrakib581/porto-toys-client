@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useState } from 'react';
 export const AuthContext = createContext(null)
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile, } from "firebase/auth";
 import app from '../firebase/firebase.config'
+import Swal from 'sweetalert2';
 
 const auth = getAuth(app)
 
@@ -36,6 +37,13 @@ const AuthProvider = ({children}) => {
     //update user info
     //user logout
     const logout = ()=>{
+        Swal.fire({
+            position: 'top-center',
+            icon: 'success',
+            title: 'Logout successfull.',
+            showConfirmButton: false,
+            timer: 2000
+          })
         return signOut(auth)
     }
     //user logout
