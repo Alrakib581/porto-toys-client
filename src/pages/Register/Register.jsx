@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import useDynamicTitle from '../../hooks/useDynamicTitle';
 import { AuthContext } from '../../provider/AuthProvider';
 import { GoogleAuthProvider, getAuth } from 'firebase/auth';
+import Swal from 'sweetalert2';
 
 const Register = () => {
     useDynamicTitle('Register')
@@ -21,8 +22,11 @@ const Register = () => {
         creatingUser(email,password)
         .then(result =>{
             const createdNewUser = result.user;
-            console.log(createdNewUser);
             userNamePhoto(createdNewUser,name,photo)
+            Swal.fire({
+                icon: 'success',
+                title: 'Your Account has created successfully.',
+              })
             
         })
         .catch(error =>{
@@ -44,7 +48,7 @@ const Register = () => {
           displayName: name, photoURL: photo
         })
         .then(()=>{
-          console.log('updated')
+        //   console.log('updated')
         })
         .catch(error=>{
           setError(error)
