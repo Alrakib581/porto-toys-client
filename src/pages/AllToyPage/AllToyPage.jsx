@@ -20,7 +20,7 @@ const AllToyPage = () => {
             </div>
             <div className='container overflow-auto  my-5 '>
                 <Table className='' striped bordered hover>
-                    <thead className=''>
+                    <thead className='text-center'>
                         <tr>
                             <th>Seller Name</th>
                             <th>Toy Name</th>
