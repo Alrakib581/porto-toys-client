@@ -1,32 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Footer.css'
+import FooterCard from '../FooterCard/FooterCard';
 
 const Footer = () => {
+    const [footerData, setFooterData] = useState([])
+  useEffect(()=>{
+    fetch('http://localhost:5000/footer')
+    .then(res=> res.json())
+    .then(data =>{
+        // console.log(data)
+        setFooterData(data)
+    })
+  },[])  
     return (
         <div className='bg-light footer py-4'>
             <div className='container'>
                 <div className="row">
-                    <div className="col-md-3">
-                        <p>Lorem ipsum dolor sit amet.</p>
-                        <p>Lorem ipsum dolor sit amet.</p>
-                        <p>Lorem ipsum dolor sit amet.</p>
-                        <p>Lorem ipsum dolor sit amet.</p>
-                        <p>Lorem ipsum dolor sit amet.</p>
-                    </div>
-                    <div className="col-md-3">
-                        <p>Lorem ipsum dolor sit amet.</p>
-                        <p>Lorem ipsum dolor sit amet.</p>
-                        <p>Lorem ipsum dolor sit amet.</p>
-                        <p>Lorem ipsum dolor sit amet.</p>
-                        <p>Lorem ipsum dolor sit amet.</p>
-                    </div>
-                    <div className="col-md-3">
-                        <p>Lorem ipsum dolor sit amet.</p>
-                        <p>Lorem ipsum dolor sit amet.</p>
-                        <p>Lorem ipsum dolor sit amet.</p>
-                        <p>Lorem ipsum dolor sit amet.</p>
-                        <p>Lorem ipsum dolor sit amet.</p>
-                    </div>
+                   {
+                    footerData.map(fData => <FooterCard
+                    key={fData._id}
+                    fData={fData}
+                    ></FooterCard>)
+                   }
                     <div className="col-md-3">
                         <h5>Feel free to contact</h5>
                         <form>
