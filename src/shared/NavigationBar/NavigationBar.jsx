@@ -24,10 +24,12 @@ const NavigationBar = () => {
                     {
                         user ? <>
                             <NavDropdown className='fw-semibold' title="Menu" id="basic-nav-dropdown">
-                                <NavDropdown.Item href="#action/3.1">
-                                    <Link>My Toys</Link>
+                                <NavDropdown.Item>
+                                    <Link className='nav-link fw-semibold' to='/mytoys'>My Toys</Link>
                                 </NavDropdown.Item>
-                                <NavDropdown.Item> <Link>Add A Toy</Link> </NavDropdown.Item>
+                                <NavDropdown.Item> 
+                                    <Link className='nav-link fw-semibold' to='/addtoy'>Add A Toy</Link>
+                                 </NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item>
                                      <button className='btn fw-bold w-100' onClick={userLogout}>Logout</button>

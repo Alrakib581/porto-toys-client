@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useDynamicTitle from '../../hooks/useDynamicTitle';
 import { AuthContext } from '../../provider/AuthProvider';
 import { GoogleAuthProvider, getAuth } from 'firebase/auth';
@@ -10,6 +10,7 @@ const Register = () => {
     useDynamicTitle('Register')
     const [error, setError] = useState('')
     const {loginUserWithGoogle, creatingUser, userInfoUpdate} = useContext(AuthContext)
+    const navigate = useNavigate();
     // registration field code 
     const handleRegister = (event)=>{
         event.preventDefault()
@@ -27,7 +28,8 @@ const Register = () => {
                 icon: 'success',
                 title: 'Your Account has created successfully.',
               })
-            
+            event.target.reset()
+            navigate('/');
         })
         .catch(error =>{
             console.log(error)

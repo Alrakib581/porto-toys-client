@@ -19,11 +19,8 @@ const Login = () => {
         signInUser(email, password)
         .then(result =>{
             const user = result.user;
-            console.log(user)
-            Swal.fire({
-                icon: 'success',
-                title: 'Your Account has created successfully.',
-              })
+            setError('')
+            event.target.reset();
         })
         .catch(error =>{
             if(error.message === 'Firebase: Error (auth/wrong-password).'){
@@ -34,7 +31,6 @@ const Login = () => {
               }
         })
     }
-    // console.log(error)
     // email password login field code
 
     //Google login auth code 
@@ -44,7 +40,7 @@ const Login = () => {
            loginUserWithGoogle(auth, googleProvider)
            .then(result =>{
              const newUser = result.user
-             console.log(newUser)
+            //  console.log(newUser)
            })
            .catch(error => {
              console.log(error)

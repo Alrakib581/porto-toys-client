@@ -7,7 +7,7 @@ const auth = getAuth(app)
 
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null)
-
+    const [loading, setLoading] = useState(true)
 
     //Google registration or sign in code here
     const loginUserWithGoogle = (auth, provider)=>{
@@ -17,12 +17,14 @@ const AuthProvider = ({children}) => {
 
     //created user with email and password
     const creatingUser =(email, password)=>{
+        setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
     //created user with email and password
 
     //signin user code
     const signInUser = (email, password)=>{
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     } 
     //signin user code 
@@ -39,9 +41,12 @@ const AuthProvider = ({children}) => {
     //user logout
     useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth, logUser =>{
-            setUser(logUser)
+            setUser(logUser);
+            setLoading(false);
         })
-        return unsubscribe();
+        return ()=>{
+            unsubscribe()
+        } 
     },[])
     const authInformation = {
         loginUserWithGoogle,
@@ -49,6 +54,7 @@ const AuthProvider = ({children}) => {
         creatingUser,
         userInfoUpdate,
         signInUser,
+        loading,
         user,
     }
     return (
