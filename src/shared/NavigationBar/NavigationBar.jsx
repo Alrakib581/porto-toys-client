@@ -14,8 +14,8 @@ const NavigationBar = () => {
             console.log('cliked')
     }
     return (
-        <div className=''>
-            <div className='container bg-white d-flex justify-content-between align-items-center py-3'>
+        <div className='bg-light'>
+            <div className='container d-flex justify-content-between align-items-center py-3'>
                 <div className='d-flex align-items-center'>
                     <img className='logo' src={logo} alt="logo" />
                     <h5 className='ms-3'><Link className='fw-bold company-name text-decoration-none'>Porto Toys</Link></h5>

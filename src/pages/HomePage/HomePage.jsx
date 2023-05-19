@@ -6,7 +6,7 @@ import Companies from '../../components/Companies/Companies';
 import About from '../../components/About/About';
 
 const HomePage = () => {
-    useDynamicTitle('home')
+    useDynamicTitle('Home')
     return (
         <div>
             <HompageBanner></HompageBanner>
