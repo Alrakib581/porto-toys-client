@@ -1,40 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import GalleryCard from '../GallerCard/GalleryCard';
 
 const Gallery = () => {
+    const [gallery, setGallery] = useState([]);
+    useEffect(() => {
+        fetch('http://localhost:5000/gallery')
+            .then(res => res.json())
+            .then(data => setGallery(data))
+    }, [])
+    //    console.log(gallery)
     return (
         <div className='container my-5'>
             <h4 className='text-center company-name'>Toy Gallery</h4>
             <div className="row  my-5">
-                <div className="col-md-4 mb-4">
-                    <div className='border rounded p-2'>
-                        <img className='img-fluid' src="https://img.freepik.com/free-vector/illustration-different-kind-toys_1308-2216.jpg?size=626&ext=jpg&ga=GA1.1.1321952685.1675488582&semt=ais" alt="" />
-                    </div>
-                </div>
-                <div className="col-md-4 mb-4">
-                    <div className='border p-2'>
-                        <img className='img-fluid' src="https://img.freepik.com/free-vector/illustration-different-kind-toys_1308-2216.jpg?size=626&ext=jpg&ga=GA1.1.1321952685.1675488582&semt=ais" alt="" />
-                    </div>
-                </div>
-                <div className="col-md-4 mb-4">
-                    <div className='border p-2'>
-                        <img className='img-fluid' src="https://img.freepik.com/free-vector/illustration-different-kind-toys_1308-2216.jpg?size=626&ext=jpg&ga=GA1.1.1321952685.1675488582&semt=ais" alt="" />
-                    </div>
-                </div> 
-                <div className="col-md-4">
-                    <div className='border p-2'>
-                        <img className='img-fluid' src="https://img.freepik.com/free-vector/illustration-different-kind-toys_1308-2216.jpg?size=626&ext=jpg&ga=GA1.1.1321952685.1675488582&semt=ais" alt="" />
-                    </div>
-                </div> 
-                <div className="col-md-4">
-                    <div className='border p-2'>
-                        <img className='img-fluid' src="https://img.freepik.com/free-vector/illustration-different-kind-toys_1308-2216.jpg?size=626&ext=jpg&ga=GA1.1.1321952685.1675488582&semt=ais" alt="" />
-                    </div>
-                </div> 
-                <div className="col-md-4">
-                    <div className='border p-2'>
-                        <img className='img-fluid' src="https://img.freepik.com/free-vector/illustration-different-kind-toys_1308-2216.jpg?size=626&ext=jpg&ga=GA1.1.1321952685.1675488582&semt=ais" alt="" />
-                    </div>
-                </div> 
+                {
+                    gallery.map(pic => <GalleryCard
+                        key={pic._id}
+                        pic={pic}
+                    ></GalleryCard>)
+                }
+
             </div>
         </div>
     );
