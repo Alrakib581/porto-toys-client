@@ -1,7 +1,6 @@
 import React from 'react';
 import useDynamicTitle from '../../hooks/useDynamicTitle';
 import { Table } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import { HiOutlineXCircle } from "react-icons/hi2";
 
 const MyToys = () => {
@@ -14,7 +13,7 @@ const MyToys = () => {
             </div>
             <div>
             <div className='container overflow-auto  my-5 '>
-                <Table className='' striped bordered hover>
+                <Table hover>
                     <thead className='text-center'>
                         <tr>
                             <th>Seller Name</th>
