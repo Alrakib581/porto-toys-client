@@ -6,7 +6,7 @@ const FooterCard = ({fData}) => {
     const {title,description}= fData;
     // console.log(description)
     return (
-        <div className="col-md-3">
+        <div className=" col-6 col-md-3">
             <h5>{title}</h5>
            {
              description.map( (data, idx) => <p key={idx} ><Link className='nav-link fw-semibold'  to={data?.url}>{data?.utitle}</Link></p>)

@@ -4,6 +4,7 @@ import HompageBanner from '../../components/Banner/HompageBanner';
 import Gallery from '../../components/Gallery/Gallery';
 import Companies from '../../components/Companies/Companies';
 import About from '../../components/About/About';
+import CategorySection from '../../components/CategorySection/CategorySection';
 
 const HomePage = () => {
     useDynamicTitle('Home')
@@ -11,6 +12,7 @@ const HomePage = () => {
         <div>
             <HompageBanner></HompageBanner>
             <Gallery></Gallery>
+            <CategorySection></CategorySection>
             <About></About>
             <Companies></Companies>
 
