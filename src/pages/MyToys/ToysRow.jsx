@@ -30,7 +30,6 @@ const ToysRow = ({toys,newToys,setnewToys}) => {
                             )
                         }
                         const remaining = newToys.filter(td => td._id !== _id)
-                        // console.log(remaining)
                         setnewToys(remaining);
                     })
             }

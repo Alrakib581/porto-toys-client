@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const CategoryCard = ({toy}) => {
     // console.log(toy)
-    const {url,toyName,rating,price,} = toy;
+    const {url,toyName,rating,price,_id} = toy;
     return (
         <div className=' col-sm-6 col-md-4 col-lg-3'>
           <div className="border p-2 rounded">
@@ -15,7 +15,7 @@ const CategoryCard = ({toy}) => {
                 <h5>{toyName}</h5>
                 <p>Price: {price} Taka</p>
                 <p>Rattings: {rating}</p>
-                <Link className='btn btn-outline-dark'>View Details</Link>
+                <Link to={`toydetails/${_id}`} className='btn btn-outline-dark'>View Details</Link>
             </div>
           </div>
         </div>

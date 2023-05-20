@@ -1,8 +1,10 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import useDynamicTitle from '../../hooks/useDynamicTitle';
 const UpdatePage = () => {
     const toyData = useLoaderData()
+    useDynamicTitle('Update a toy')
     // console.log(toyData);
     const {toyName, price, message, quantity,_id} = toyData
     const handleUpdate =(event)=>{

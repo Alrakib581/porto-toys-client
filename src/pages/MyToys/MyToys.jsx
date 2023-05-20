@@ -8,7 +8,6 @@ const MyToys = () => {
     useDynamicTitle('My Toys')
     const loadedToys = useLoaderData()
     const [newToys, setnewToys] = useState(loadedToys)
-    // console.log(newToys)
     return (
         <div>
             <div className='bg-light py-5 text-center company-name'>
@@ -17,7 +16,7 @@ const MyToys = () => {
             </div>
             <div>
             <div className='container overflow-auto  my-5 '>
-                <div> <h5 className='text-center mb-4'>Total found {loadedToys.length} item</h5></div>
+                <div> <h5 className='text-center mb-4'>Total found {newToys.length} item</h5></div>
                 <Table hover>
                     <thead className='text-center'>
                         <tr>
@@ -39,7 +38,6 @@ const MyToys = () => {
                         newToys={newToys}
                         setnewToys={setnewToys}
                         >
-
                         </ToysRow>)
                       }
                     
