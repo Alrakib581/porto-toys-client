@@ -12,6 +12,7 @@ const AuthProvider = ({children}) => {
 
     //Google registration or sign in code here
     const loginUserWithGoogle = (auth, provider)=>{
+        setLoading(true);
         return signInWithPopup(auth, provider)
     }
     //Google registration or sign in code here
@@ -37,6 +38,7 @@ const AuthProvider = ({children}) => {
     //update user info
     //user logout
     const logout = ()=>{
+        setLoading(true)
         Swal.fire({
             position: 'top-center',
             icon: 'success',
