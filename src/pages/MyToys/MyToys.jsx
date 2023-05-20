@@ -1,13 +1,54 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import useDynamicTitle from '../../hooks/useDynamicTitle';
 import { Table } from 'react-bootstrap';
 import ToysRow from './ToysRow';
-import { useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const MyToys = () => {
     useDynamicTitle('My Toys')
-    const loadedToys = useLoaderData()
-    const [newToys, setnewToys] = useState(loadedToys)
+    const {user} = useContext(AuthContext);
+    const [tdata, setTdata]= useState([])
+    
+    useEffect(()=>{
+        const url = `http://localhost:5000/mytoys?email=${user?.email}`;
+        fetch(url)
+        .then(res => res.json())
+        .then(data => {
+            setTdata(data)
+        })
+    },[])
+
+    const handleDelete = (_id) => {
+        Swal.fire({
+            title: 'Are you sure! You want to delete a toy?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#5F7161',
+            cancelButtonColor: '#333333',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/toys/${_id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your toy has been deleted.',
+                                'success'
+                            )
+                        }
+                        const remaining = tdata.filter(td => td._id !== _id)
+                        setTdata(remaining);
+                    })
+            }
+        })
+    }
+    
     return (
         <div>
             <div className='bg-light py-5 text-center company-name'>
@@ -16,7 +57,7 @@ const MyToys = () => {
             </div>
             <div>
             <div className='container overflow-auto  my-5 '>
-                <div> <h5 className='text-center mb-4'>Total found {newToys.length} item</h5></div>
+                <div> <h5 className='text-center mb-4'>Total found {tdata.length} item</h5></div>
                 <Table hover>
                     <thead className='text-center'>
                         <tr>
@@ -32,11 +73,10 @@ const MyToys = () => {
                     </thead>
                     <tbody className='text-center'>
                       {
-                        newToys.map(toys =>  <ToysRow
+                        tdata.map(toys =>  <ToysRow
                         toys={toys}
                         key={toys._id}
-                        newToys={newToys}
-                        setnewToys={setnewToys}
+                        handleDelete={handleDelete}
                         >
                         </ToysRow>)
                       }

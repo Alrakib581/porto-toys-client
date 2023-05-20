@@ -10,7 +10,6 @@ import MyToys from "../pages/MyToys/MyToys";
 import PrivateRout from "../layouts/PrivateRout/PrivateRout";
 import UpdatePage from "../pages/UpdatePage/UpdatePage";
 import ToyDetailsPage from "../pages/ToyDetailsPage/ToyDetailsPage";
-
 const router = createBrowserRouter([
   {
     path: '/',

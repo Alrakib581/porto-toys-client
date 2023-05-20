@@ -2,15 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import CategoryCard from './CategoryCard/CategoryCard';
+import Loader from '../Loader/Loader';
 
 const CategorySection = () => {
     const [toys , setToys] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
     useEffect(()=>{
+        setIsLoading(true);
         fetch('http://localhost:5000/toys')
         .then(res => res.json())
         .then(data =>{
             // console.log(data);
             setToys(data)
+            setIsLoading(false)
         })
     },[])
     return (
@@ -18,6 +22,9 @@ const CategorySection = () => {
             <div className='my-5'>
                 <h4 className='company-name text-center text-decoration-underline'>Shop By Category</h4>
             </div>
+            {
+                isLoading && <Loader></Loader>
+            }
             <Tabs>
                 <TabList className='border rounded'>
                     <Tab>
