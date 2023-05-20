@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import useDynamicTitle from '../../hooks/useDynamicTitle';
 import { Table } from 'react-bootstrap';
-import { HiOutlineXCircle } from "react-icons/hi2";
-import { useLoaderData } from 'react-router-dom';
 import ToysRow from './ToysRow';
+import { useLoaderData } from 'react-router-dom';
 
 const MyToys = () => {
     useDynamicTitle('My Toys')
-    const toys = useLoaderData();
-    // console.log(toys);
+    const loadedToys = useLoaderData()
+    const [newToys, setnewToys] = useState(loadedToys)
+    // console.log(newToys)
     return (
         <div>
             <div className='bg-light py-5 text-center company-name'>
@@ -17,7 +17,7 @@ const MyToys = () => {
             </div>
             <div>
             <div className='container overflow-auto  my-5 '>
-                <div> <h5 className='text-center mb-4'>Total found {toys.length} item</h5></div>
+                <div> <h5 className='text-center mb-4'>Total found {loadedToys.length} item</h5></div>
                 <Table hover>
                     <thead className='text-center'>
                         <tr>
@@ -32,13 +32,18 @@ const MyToys = () => {
                         </tr>
                     </thead>
                     <tbody className='text-center'>
-                       {
-                         toys.map(toy => <ToysRow
-                         key={toy._id}
-                         toy={toy}
-                         ></ToysRow>)
-                       }
-                    </tbody>
+                      {
+                        newToys.map(toys =>  <ToysRow
+                        toys={toys}
+                        key={toys._id}
+                        newToys={newToys}
+                        setnewToys={setnewToys}
+                        >
+
+                        </ToysRow>)
+                      }
+                    
+                 </tbody>
                 </Table>
             </div>
             </div>

@@ -3,9 +3,8 @@ import { HiOutlineXCircle } from 'react-icons/hi2';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
-const ToysRow = ({ toy }) => {
-    const { name, toyName, subCategory, price, quantity, email, rating, _id } = toy;
-
+const ToysRow = ({toys,newToys,setnewToys}) => {
+    const { name, toyName, subCategory, price, quantity, email, rating, _id } = toys;
     const handleDelete = (_id) => {
         Swal.fire({
             title: 'Are you sure! You want to delete a toy?',
@@ -30,6 +29,9 @@ const ToysRow = ({ toy }) => {
                                 'success'
                             )
                         }
+                        const remaining = newToys.filter(td => td._id !== _id)
+                        // console.log(remaining)
+                        setnewToys(remaining);
                     })
             }
         })
