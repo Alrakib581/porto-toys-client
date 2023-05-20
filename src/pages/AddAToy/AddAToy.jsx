@@ -41,6 +41,7 @@ const AddAToy = () => {
                         showConfirmButton: false,
                         timer: 2000
                       })
+                      event.target.reset();
                 }
             })
         //  client to server code  

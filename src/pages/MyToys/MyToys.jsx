@@ -2,9 +2,13 @@ import React from 'react';
 import useDynamicTitle from '../../hooks/useDynamicTitle';
 import { Table } from 'react-bootstrap';
 import { HiOutlineXCircle } from "react-icons/hi2";
+import { useLoaderData } from 'react-router-dom';
+import ToysRow from './ToysRow';
 
 const MyToys = () => {
     useDynamicTitle('My Toys')
+    const toys = useLoaderData();
+    // console.log(toys);
     return (
         <div>
             <div className='bg-light py-5 text-center company-name'>
@@ -13,40 +17,27 @@ const MyToys = () => {
             </div>
             <div>
             <div className='container overflow-auto  my-5 '>
+                <div> <h5 className='text-center mb-4'>Total found {toys.length} item</h5></div>
                 <Table hover>
                     <thead className='text-center'>
                         <tr>
-                            <th>Seller Name</th>
                             <th>Toy Name</th>
                             <th>Sub-category</th>
                             <th>Price</th>
                             <th>Available Quantity</th>
+                            <th>Sellar Name</th>
+                            <th>Seller Email</th>
+                            <th>Rating</th>
                             <th>Update or Delete</th>
                         </tr>
                     </thead>
                     <tbody className='text-center'>
-                        <tr>
-                            <td>Abdulla Al Rakib</td>
-                            <td>Police Car</td>
-                            <td>Trucks</td>
-                            <td>200 Taka</td>
-                            <td>190 pice</td>
-                            <td>
-                                <button className='btn btn-outline-success'>Update</button>
-                                <button className='btn'><HiOutlineXCircle className='fs-1 text-success'></HiOutlineXCircle></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Abdulla Al Rakib</td>
-                            <td>Police Car</td>
-                            <td>Trucks</td>
-                            <td>200 Taka</td>
-                            <td>190 pice</td>
-                            <td>
-                                <button className='btn btn-outline-success'>Update</button>
-                                <button className='btn'><HiOutlineXCircle className='fs-1 text-success'></HiOutlineXCircle></button>
-                            </td>
-                        </tr>
+                       {
+                         toys.map(toy => <ToysRow
+                         key={toy._id}
+                         toy={toy}
+                         ></ToysRow>)
+                       }
                     </tbody>
                 </Table>
             </div>
