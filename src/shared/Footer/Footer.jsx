@@ -5,7 +5,7 @@ import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 const Footer = () => {
     const [footerData, setFooterData] = useState([])
   useEffect(()=>{
-    fetch('https://porto-server-rakib0157.vercel.app/footer')
+    fetch('http://localhost:5000/footer')
     .then(res=> res.json())
     .then(data =>{
         // console.log(data)

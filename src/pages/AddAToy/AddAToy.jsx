@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
 import useDynamicTitle from '../../hooks/useDynamicTitle';
 import { AuthContext } from '../../provider/AuthProvider';
+import Swal from 'sweetalert2';
 const AddAToy = () => {
     useDynamicTitle('Add A Toy')
-    const {user} = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
     // console.log(user)
     //add toy data collectin form function
     const handleAddToy = (event) => {
@@ -18,18 +19,41 @@ const AddAToy = () => {
         const rating = form.rating.value;
         const quantity = form.quantity.value;
         const message = form.message.value;
-        const toyData = {name, email, toyName, url, subCategory, price, rating, quantity, message}
-        console.log(toyData)
+        const toyData = { name, email, toyName, url, subCategory, price, rating, quantity, message }
+        // console.log(toyData)
 
-        
+        // client to server code 
+        fetch('http://localhost:5000/toys', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(toyData)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if(data.insertedId){
+                    Swal.fire({
+                        position: 'top-center',
+                        icon: 'success',
+                        title: 'Your Toy successfully added.',
+                        showConfirmButton: false,
+                        timer: 2000
+                      })
+                }
+            })
+        //  client to server code  
+
+
     };
     //add toy data collectin form function
     return (
         <div className=''>
-           <div className='bg-light text-center company-name py-5'>
+            <div className='bg-light text-center company-name py-5'>
                 <h2 className='fw-bold'>Add A Toy</h2>
                 <p className='fw-semibold'>Do you want to add a toy? Then fill the form below and submit.</p>
-           </div>
+            </div>
             <div className='container'>
                 <form className='mx-md-5 my-5 company-name' onSubmit={handleAddToy}>
                     <div className="row gy-4">
@@ -70,7 +94,7 @@ const AddAToy = () => {
                                     <input required type="text" name='price' className="form-control" />
                                 </div>
                                 <div className="col-md-4">
-                                     <label>Rating:</label>
+                                    <label>Rating:</label>
                                     <input required name='rating' type="number" min='1' max='5' className="form-control" />
                                 </div>
                                 <div className="col-md-4">

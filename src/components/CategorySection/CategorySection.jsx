@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import CategoryCard from './CategoryCard/CategoryCard';
 
 const CategorySection = () => {
+    const [toys , setToys] = useState([])
+    useEffect(()=>{
+        fetch('http://localhost:5000/toys')
+        .then(res => res.json())
+        .then(data =>{
+            // console.log(data);
+            setToys(data)
+        })
+    },[])
     return (
         <div className='container'>
             <div className='my-5'>
@@ -22,8 +32,15 @@ const CategorySection = () => {
                 </TabList>
 
                 <TabPanel>
-                    <div className='border rounded bg-light py-4'>
-                    <h2>Any content 1</h2>
+                    <div className='py-4'>
+                        <div className="row gy-4">
+                            {
+                                toys.map(toy => <CategoryCard
+                                    key={toy._id}
+                                    toy={toy}
+                                ></CategoryCard>)
+                            }
+                        </div>
                    </div>
                 </TabPanel>
                 <TabPanel>
