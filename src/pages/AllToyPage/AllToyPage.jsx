@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './AllToyPage.css';
-import { Button, Form, InputGroup, Table } from 'react-bootstrap';
+import { Form, InputGroup, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import useDynamicTitle from '../../hooks/useDynamicTitle';
+import AllToysRow from './AllToysRow';
 
 const AllToyPage = () => {
     useDynamicTitle('All Toys')
+    const [alltoys, setAllToys] = useState([])
+    useEffect(()=>{
+        fetch('http://localhost:5000/toys')
+        .then(res => res.json())
+        .then(data =>{
+            setAllToys(data)
+        })
+    },[])
+    // console.log(alltoys)
     return (
         <div className=''>
             <div className='text-center mb-5 bg-light py-5 rounded'>
@@ -31,30 +41,21 @@ const AllToyPage = () => {
                         </tr>
                     </thead>
                     <tbody className='text-center'>
-                        <tr>
+                        {/* <tr>
                             <td>Abdulla Al Rakib</td>
                             <td>Police Car</td>
                             <td>Trucks</td>
                             <td>200 Taka</td>
                             <td>190 pice</td>
                             <td><Link className='text-dark fw-semibold'>View Details</Link></td>
-                        </tr>
-                        <tr>
-                            <td>Abdulla Al Rakib</td>
-                            <td>Police Car</td>
-                            <td>Trucks</td>
-                            <td>200 Taka</td>
-                            <td>190 pice</td>
-                            <td><Link className='text-dark fw-semibold'>View Details</Link></td>
-                        </tr>
-                        <tr>
-                            <td>Abdulla Al Rakib</td>
-                            <td>Police Car</td>
-                            <td>Trucks</td>
-                            <td>200 Taka</td>
-                            <td>190 pice</td>
-                            <td><Link className='text-dark fw-semibold'>View Details</Link></td>
-                        </tr>
+                        </tr> */}
+                       {
+                        alltoys.map(alltoy => <AllToysRow
+                                key={alltoy._id}
+                                alltoy={alltoy}
+                        ></AllToysRow>)
+                       }
+                       
                     </tbody>
                 </Table>
             </div>
