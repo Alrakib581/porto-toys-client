@@ -85,7 +85,11 @@ const AddAToy = () => {
                         <div className="col-md-4">
                             <div className="form-group">
                                 <label>Sub-category</label>
-                                <input required type="text" name='subCategory' className="form-control" />
+                                <select required name='subCategory' className='form-control' id="">
+                                    <option value="racing car">racing car</option>
+                                    <option value="fighter toy">fighter toy</option>
+                                    <option value="mini item">mini item</option>
+                                </select>
                             </div>
                         </div>
                         <div className="col-md-4">

@@ -41,14 +41,6 @@ const AllToyPage = () => {
                         </tr>
                     </thead>
                     <tbody className='text-center'>
-                        {/* <tr>
-                            <td>Abdulla Al Rakib</td>
-                            <td>Police Car</td>
-                            <td>Trucks</td>
-                            <td>200 Taka</td>
-                            <td>190 pice</td>
-                            <td><Link className='text-dark fw-semibold'>View Details</Link></td>
-                        </tr> */}
                        {
                         alltoys.map(alltoy => <AllToysRow
                                 key={alltoy._id}

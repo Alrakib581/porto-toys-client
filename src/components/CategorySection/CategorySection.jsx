@@ -6,10 +6,23 @@ import Loader from '../Loader/Loader';
 
 const CategorySection = () => {
     const [toys , setToys] = useState([])
+    const [rtoys, setRtoys] = useState([])
+    const [mtoys, setMtoys] = useState([])
+
     const [isLoading, setIsLoading] = useState(false)
     useEffect(()=>{
         setIsLoading(true);
-        fetch('http://localhost:5000/toys')
+        fetch(`http://localhost:5000/stoys/?subCategory=racing%20car`)
+        .then(res => res.json())
+        .then(data =>{
+            // console.log(data);
+            setRtoys(data)
+            setIsLoading(false)
+        })
+    },[])
+    useEffect(()=>{
+        setIsLoading(true);
+        fetch(`http://localhost:5000/stoys/?subCategory=fighter%20toy`)
         .then(res => res.json())
         .then(data =>{
             // console.log(data);
@@ -17,6 +30,18 @@ const CategorySection = () => {
             setIsLoading(false)
         })
     },[])
+    
+    useEffect(()=>{
+        setIsLoading(true);
+        fetch(`http://localhost:5000/stoys/?subCategory=mini%20item`)
+        .then(res => res.json())
+        .then(data =>{
+            // console.log(data);
+            setMtoys(data)
+            setIsLoading(false)
+        })
+    },[])
+
     return (
         <div className='container'>
             <div className='my-5'>
@@ -28,18 +53,30 @@ const CategorySection = () => {
             <Tabs>
                 <TabList className='border rounded'>
                     <Tab>
-                        <span className='text-success fw-semibold'>Toy vehicle</span>
+                        <span className='text-success fw-semibold'>Racing Car</span>
                     </Tab>
                     <Tab>
-                        <span className='text-success fw-semibold'>Mini Ball</span>
+                        <span  className='text-success fw-semibold'>Fighter Toy</span>
                     </Tab>
                     <Tab>
-                        <span className='text-success fw-semibold'>Water toy</span>
+                        <span className='text-success fw-semibold'>Mini Item</span>
                     </Tab>
                 </TabList>
 
                 <TabPanel>
                     <div className='py-4'>
+                        <div className="row gy-4">
+                            {
+                                rtoys.map(toy => <CategoryCard
+                                    key={toy._id}
+                                    toy={toy}
+                                ></CategoryCard>)
+                            }
+                        </div>
+                   </div>
+                </TabPanel>
+                <TabPanel>
+                <div className='py-4'>
                         <div className="row gy-4">
                             {
                                 toys.map(toy => <CategoryCard
@@ -51,13 +88,15 @@ const CategorySection = () => {
                    </div>
                 </TabPanel>
                 <TabPanel>
-                    <div className='border rounded bg-light py-4'>
-                    <h2>Any content 2</h2>
-                   </div>
-                </TabPanel>
-                <TabPanel>
-                    <div className='border rounded bg-light py-4'>
-                    <h2>Any content 3</h2>
+                <div className='py-4'>
+                        <div className="row gy-4">
+                            {
+                                mtoys.map(toy => <CategoryCard
+                                    key={toy._id}
+                                    toy={toy}
+                                ></CategoryCard>)
+                            }
+                        </div>
                    </div>
                 </TabPanel>                
             </Tabs>

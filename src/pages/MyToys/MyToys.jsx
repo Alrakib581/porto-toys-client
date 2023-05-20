@@ -9,6 +9,7 @@ const MyToys = () => {
     useDynamicTitle('My Toys')
     const {user} = useContext(AuthContext);
     const [tdata, setTdata]= useState([])
+    // const [ active, setActive] = useState('full')
     
     useEffect(()=>{
         const url = `http://localhost:5000/mytoys?email=${user?.email}`;
@@ -19,6 +20,9 @@ const MyToys = () => {
         })
     },[])
 
+    const handleSbtn =()=>{
+        // console.log('cliked')
+    }
     const handleDelete = (_id) => {
         Swal.fire({
             title: 'Are you sure! You want to delete a toy?',
@@ -54,6 +58,8 @@ const MyToys = () => {
             <div className='bg-light py-5 text-center company-name'>
                 <h2 className='fw-bold'>My Toys</h2>
                 <p>Here Your Toy list that you added. You can update the toy information.</p>
+                <p className='fw-bold'>Sort by price</p>
+                <p><button onClick={handleSbtn} className='btn btn-outline-success'>Low to high</button> <button onClick={handleSbtn} className='btn btn-outline-success'>high to low</button></p>
             </div>
             <div>
             <div className='container overflow-auto  my-5 '>
