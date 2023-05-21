@@ -15,7 +15,7 @@ const UpdatePage = () => {
         const message = form.message.value;
         const updateToyInfo = {price, quantity, message};
         // console.log(updateToyInfo);
-        fetch(`https://porto-server-rakib0157.vercel.app/toys${_id}`,{
+        fetch(`https://porto-server-rakib0157.vercel.app/toys/${_id}`,{
             method:'PUT',
             headers:{
                 'content-type': 'application/json'
