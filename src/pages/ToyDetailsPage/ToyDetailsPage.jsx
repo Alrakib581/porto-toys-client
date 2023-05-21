@@ -2,9 +2,11 @@ import React from 'react';
 import { FaRegStar, FaStar } from 'react-icons/fa';
 import Rating from 'react-rating';
 import { useLoaderData } from 'react-router-dom';
+import useDynamicTitle from '../../hooks/useDynamicTitle';
 
 const ToyDetailsPage = () => {
     const details = useLoaderData();
+    useDynamicTitle('toy details')
     // console.log(details)
     const { email, message, name, price, quantity, rating, subCategory, url, toyName, _id } = details;
     return (
