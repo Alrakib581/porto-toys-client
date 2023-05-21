@@ -1,4 +1,6 @@
 import React from 'react';
+import { FaRegStar, FaStar } from 'react-icons/fa';
+import Rating from 'react-rating';
 import { useLoaderData } from 'react-router-dom';
 
 const ToyDetailsPage = () => {
@@ -26,6 +28,12 @@ const ToyDetailsPage = () => {
                             <p>Available Quantity {quantity} pc</p>
                             <p>{message} lorem200</p>
                             <p>{rating}</p>
+                            <p> <Rating
+                                placeholderRating={rating}
+                                readonly
+                                emptySymbol={<FaRegStar></FaRegStar>}
+                                placeholderSymbol={<FaStar></FaStar>}
+                                fullSymbol={<FaStar></FaStar>} /></p>
                         </div>
                     </div>
                 </div>

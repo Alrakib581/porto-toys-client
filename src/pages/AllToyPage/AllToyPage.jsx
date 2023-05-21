@@ -8,22 +8,31 @@ import AllToysRow from './AllToysRow';
 const AllToyPage = () => {
     useDynamicTitle('All Toys')
     const [alltoys, setAllToys] = useState([])
+    const [search, setSearch] = useState('');
+
     useEffect(()=>{
-        fetch('http://localhost:5000/toys')
+        fetch(`https://porto-server-rakib0157.vercel.app/toys`)
         .then(res => res.json())
         .then(data =>{
             setAllToys(data)
         })
     },[])
-    // console.log(alltoys)
+    
+    const handleSearch = (event)=>{
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        setSearch(name)
+
+    }
     return (
         <div className=''>
             <div className='text-center mb-5 bg-light py-5 rounded'>
                 <h3 className='company-name fw-bold'>All Toys </h3>
                 <p className='company-name fw-semibold'>Here You can see All Toys That Our Users Added. <br /> Also You can search a toy By toy Name.</p>
-             <Form className='form-container container py-4'>
+             <Form onSubmit={handleSearch} className='form-container container py-4'>
                 <div className="form-content d-flex justify-content-center">
-                    <input placeholder='search by toy name' className='w-50 p-2 fs-5 rounded' type="text" />
+                    <input placeholder='search by toy name' name='name' className='w-50 p-2 fs-5 rounded' type="text" />
                     <input className='w-25 p-2 fs-5 btn btn-outline-dark rounded ms-2' type="submit" value='Search' />
                  </div>
             </Form>

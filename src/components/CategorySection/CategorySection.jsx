@@ -12,7 +12,8 @@ const CategorySection = () => {
     const [isLoading, setIsLoading] = useState(false)
     useEffect(()=>{
         setIsLoading(true);
-        fetch(`http://localhost:5000/stoys/?subCategory=racing%20car`)
+        fetch('https://porto-server-rakib0157.vercel.app/stoys/?subCategory=racing%20car')
+        // fetch(`http://localhost:5000/stoys/?subCategory=racing%20car`)
         .then(res => res.json())
         .then(data =>{
             // console.log(data);
@@ -22,7 +23,8 @@ const CategorySection = () => {
     },[])
     useEffect(()=>{
         setIsLoading(true);
-        fetch(`http://localhost:5000/stoys/?subCategory=fighter%20toy`)
+        fetch('https://porto-server-rakib0157.vercel.app/stoys/?subCategory=fighter%20toy')
+        // fetch(`http://localhost:5000/stoys/?subCategory=fighter%20toy`)
         .then(res => res.json())
         .then(data =>{
             // console.log(data);
@@ -33,7 +35,7 @@ const CategorySection = () => {
     
     useEffect(()=>{
         setIsLoading(true);
-        fetch(`http://localhost:5000/stoys/?subCategory=mini%20item`)
+        fetch('https://porto-server-rakib0157.vercel.app/stoys/?subCategory=mini%20item')
         .then(res => res.json())
         .then(data =>{
             // console.log(data);

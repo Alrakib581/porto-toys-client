@@ -10,6 +10,7 @@ import MyToys from "../pages/MyToys/MyToys";
 import PrivateRout from "../layouts/PrivateRout/PrivateRout";
 import UpdatePage from "../pages/UpdatePage/UpdatePage";
 import ToyDetailsPage from "../pages/ToyDetailsPage/ToyDetailsPage";
+import ErrorPage from "../pages/Errorpage/ErrorPage";
 const router = createBrowserRouter([
   {
     path: '/',
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
         {
           path:'/toydetails/:id',
           element:<PrivateRout><ToyDetailsPage></ToyDetailsPage></PrivateRout>,
-          loader: ({params})=> fetch(`http://localhost:5000/toys/${params.id}`)
+          loader: ({params})=> fetch(`https://porto-server-rakib0157.vercel.app/toys/${params.id}`)
         },
         {
           path:'/mytoys',
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
           loader:({params})=> fetch(`http://localhost:5000/toys/${params.id}`)
         }
     ]
+  },
+  {
+    path: '*',
+    element:<ErrorPage></ErrorPage>
   }
 ])
 

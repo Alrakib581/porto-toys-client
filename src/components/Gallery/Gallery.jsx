@@ -8,7 +8,7 @@ const Gallery = () => {
     const [isLoading, setIsLoading] = useState(false)
     useEffect(() => {
         setIsLoading(true);
-        fetch('http://localhost:5000/gallery')
+        fetch('https://porto-server-rakib0157.vercel.app/gallery')
             .then(res => res.json())
             .then(data => {
                 setGallery(data)

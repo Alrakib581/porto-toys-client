@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Login.css';
 import { FaGoogle } from 'react-icons/fa';
 import useDynamicTitle from '../../hooks/useDynamicTitle';
@@ -12,6 +12,8 @@ const Login = () => {
     const navigate = useNavigate()
     const{loginUserWithGoogle, signInUser}= useContext(AuthContext)
     const [error, setError] = useState('')
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
     // email password login field code
     const handleLogin =(event)=>{
         event.preventDefault()
@@ -30,7 +32,7 @@ const Login = () => {
                 showConfirmButton: false,
                 timer: 2000
               })
-            navigate('/')
+              navigate(from,{replace: true})
         })
         .catch(error =>{
             if(error.message === 'Firebase: Error (auth/wrong-password).'){
@@ -51,7 +53,7 @@ const Login = () => {
            .then(result =>{
              const newUser = result.user
             //  console.log(newUser)
-            navigate('/')
+            navigate(from,{replace: true})
            })
            .catch(error => {
              console.log(error)
