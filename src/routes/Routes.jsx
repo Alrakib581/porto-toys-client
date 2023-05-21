@@ -48,12 +48,12 @@ const router = createBrowserRouter([
         {
           path:'/mytoys',
           element:<PrivateRout><MyToys></MyToys></PrivateRout>,
-          loader: ()=> fetch('http://localhost:5000/toys')
+          loader: ()=> fetch('https://porto-server-rakib0157.vercel.app/toys')
         },
         {
           path:'/updateToy/:id',
           element:<PrivateRout><UpdatePage></UpdatePage></PrivateRout>,
-          loader:({params})=> fetch(`http://localhost:5000/toys/${params.id}`)
+          loader:({params})=> fetch(`https://porto-server-rakib0157.vercel.app/toys/${params.id}`)
         }
     ]
   },

@@ -9,7 +9,6 @@ const MyToys = () => {
     useDynamicTitle('My Toys')
     const {user} = useContext(AuthContext);
     const [tdata, setTdata]= useState([])
-    // const [ active, setActive] = useState('full')
     
     useEffect(()=>{
         const url = `https://porto-server-rakib0157.vercel.app/mytoys?email=${user?.email}`;
