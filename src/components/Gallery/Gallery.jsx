@@ -29,7 +29,6 @@ const Gallery = () => {
                         pic={pic}
                     ></GalleryCard>)
                 }
-
             </div>
         </div>
     );

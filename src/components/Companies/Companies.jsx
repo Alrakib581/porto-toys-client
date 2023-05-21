@@ -6,7 +6,7 @@ const Companies = () => {
         <div className='container my-5 pt-4 '>
             <div className='container rounded mb-5'>
                 <div className=' text-center'>
-                    <h4 className='company-name text-decoration-underline'>Trusted Toy Company</h4>
+                    <h4 className='company-name'>Trusted Toy Company</h4>
                 </div>
                 <div className='row mt-5 pb-3 rounded border'>
                     <Marquee>

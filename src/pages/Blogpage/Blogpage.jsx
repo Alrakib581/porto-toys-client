@@ -9,6 +9,7 @@ const Blogpage = () => {
 
             <div className='container'>
                 <Card>
+                <div data-aos="fade-down">
                     <div className='row d-md-flex justify-content-center align-items-center'>
                         <div className="col-md-4">
                             <img className='img-fluid' src="https://cdn.pixabay.com/photo/2018/11/10/02/42/cloud-3805852_640.png" alt="" />
@@ -21,9 +22,12 @@ const Blogpage = () => {
                             </p>
                         </div>
                     </div>
+                    </div>
                 </Card>
                 <br />
                 <Card>
+                <div data-aos="fade-right">
+
                     <div className='row d-md-flex justify-content-center align-items-center'>
                         <div className="col-md-4">
                             <img className='img-fluid' src="https://cdn.pixabay.com/photo/2018/11/10/02/42/cloud-3805852_640.png" alt="" />
@@ -33,6 +37,7 @@ const Blogpage = () => {
                             <p>SQL: SQL databases follow a structured, tabular data model known as the relational model. Data is organized into tables with predefined schemas, and relationships between tables are established using keys.
                                 NoSQL: NoSQL databases use various data models, such as key-value, document, columnar, or graph. They provide flexibility in organizing and storing data, allowing for dynamic schemas and the ability to handle unstructured or semi-structured data.</p>
                         </div>
+                    </div>
                     </div>
                 </Card>
                 <br />
