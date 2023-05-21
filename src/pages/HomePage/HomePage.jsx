@@ -13,8 +13,8 @@ const HomePage = () => {
             <HompageBanner></HompageBanner>
             <Gallery></Gallery>
             <CategorySection></CategorySection>
-            <About></About>
             <Companies></Companies>
+            <About></About>
 
         </div>
     );
